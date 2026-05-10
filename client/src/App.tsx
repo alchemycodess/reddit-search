@@ -14,7 +14,7 @@ function App () {
       setSearched(true)
 
       setPosts([])
-      const url = `http://localhost:3000/api/search?q=${search}`
+      const url = `https://reddit-search-24wf.onrender.com/api/search?q=${search}`
 
       const response = await fetch(url)
       if(!response.ok) {
