@@ -45,8 +45,6 @@ function App () {
         padding: "40px 20px",
         fontFamily: "Urbanist, sans-serif",
         color: "#FFFFFF",
-        overflowY:
-          posts.length > 0 ? "auto" : "hidden",
         overflowX: "hidden",
         width: "100%",
         boxSizing: "border-box"
@@ -55,11 +53,12 @@ function App () {
 
       <h1
         style={{
-          fontSize: window.innerWidth < 768 ? "3px" : "5px",
-          marginBottom: "30px",
+          fontSize: window.innerWidth < 768 ? "38px" : "58px",
+          marginBottom: "24px",
           fontWeight: "700",
           color: "#FFFFFF",
           textAlign: "center",
+          lineHeight: "1.1"
         }}
       >
         Reddit Search
@@ -69,9 +68,9 @@ function App () {
       <div
         style={{
           maxWidth: "760px",
-          margin: "0 auto 35px",
+          margin: "0 auto 28px",
           display: "flex",
-          gap: "14px",
+          gap: "12px",
           flexDirection: window.innerWidth < 768 ? "column" : "row",
           width: "100%"
         }}
@@ -92,6 +91,9 @@ function App () {
             outline: "none",
             fontSize: "15px",
             fontFamily: "Urbanist, sans-serif",
+            boxSizing: "border-box",
+            width: "100%",
+            minWidth: 0,
           }}
         />
 
@@ -118,7 +120,7 @@ function App () {
     {!searched && !loading && (
       <div
         style={{
-          height: "70vh",
+          minHeight: "50vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -147,7 +149,7 @@ function App () {
     {loading && (
       <div
         style={{
-          height: "70vh",
+          minHeight: "50vh",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -182,7 +184,7 @@ function App () {
     {!loading && searched && posts.length === 0 && (
       <div
         style={{
-          height: "70vh",
+          minHeight: "50vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -220,6 +222,8 @@ function App () {
         style={{
           maxWidth: "760px",
           margin: "0 auto",
+          width: "100%",
+          boxSizing: "border-box"
         }}
       >
         {posts.map((post: any) => (
@@ -229,12 +233,13 @@ function App () {
               background: "#111111",
               border: "1px solid #222222",
               borderRadius: "24px",
-              padding: "24px",
+              padding: window.innerWidth < 768 ? "18px" : "24px",
               marginBottom: "20px",
               boxShadow: "0 8px 20px rgba(0,0,0,0.35)",
               overflow: "hidden",
               wordBreak: "break-word",
               overflowWrap: "break-word",
+              boxSizing: "border-box",
             }}
           >
             {/* Meta */}
@@ -244,6 +249,7 @@ function App () {
                 color: "#83AF3B",
                 marginBottom: "12px",
                 fontWeight: 600,
+                wordBreak: "break-word",
               }}
             >
               r/{post.subreddit} • by u/{post.author} •{" "}
