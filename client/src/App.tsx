@@ -47,12 +47,15 @@ function App () {
         color: "#FFFFFF",
         overflowY:
           posts.length > 0 ? "auto" : "hidden",
+        overflowX: "hidden",
+        width: "100%",
+        boxSizing: "border-box"
       }}
     >
 
       <h1
         style={{
-          fontSize: "58px",
+          fontSize: window.innerWidth < 768 ? "3px" : "5px",
           marginBottom: "30px",
           fontWeight: "700",
           color: "#FFFFFF",
@@ -69,6 +72,8 @@ function App () {
           margin: "0 auto 35px",
           display: "flex",
           gap: "14px",
+          flexDirection: window.innerWidth < 768 ? "column" : "row",
+          width: "100%"
         }}
       >
 
@@ -102,6 +107,7 @@ function App () {
             cursor: "pointer",
             fontSize: "15px",
             fontFamily: "Urbanist, sans-serif",
+            width: window.innerWidth < 768 ? "100%" : "auto",
           }}
         >
           Search
@@ -226,6 +232,9 @@ function App () {
               padding: "24px",
               marginBottom: "20px",
               boxShadow: "0 8px 20px rgba(0,0,0,0.35)",
+              overflow: "hidden",
+              wordBreak: "break-word",
+              overflowWrap: "break-word",
             }}
           >
             {/* Meta */}
@@ -246,14 +255,17 @@ function App () {
               href={`https://reddit.com${post.permalink}`}
               target="_blank"
               style={{
-                fontSize: "24px",
+                fontSize: window.innerWidth < 768 ? "20px" : "24px",
                 fontWeight: 700,
                 color: "#FFFFFF",
                 textDecoration: "none",
                 lineHeight: "1.5",
+                wordBreak: "break-word",
+                overflowWrap: "break-word",
+                display: "block",
               }}
             >
-              {post.title}
+              {post.title.replace(/&amp;/g, "&")}
             </a>
 
             {/* Description */}
@@ -264,6 +276,8 @@ function App () {
                   fontSize: "15px",
                   color: "#CFCFCF",
                   lineHeight: "1.8",
+                  wordBreak: "break-word",
+                  overflowWrap: "break-word",
                 }}
               >
                 {post.selftext.slice(0, 150)}...
